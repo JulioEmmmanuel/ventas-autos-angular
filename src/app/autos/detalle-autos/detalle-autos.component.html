@@ -1,0 +1,70 @@
+<div class="card">
+    <div class="card-header">
+        <h3>{{tituloPagina + ': ' + auto?.marca + ' ' + auto?.modelo}}</h3>
+    </div>
+    <div class = 'container-fluid'>
+        <div class="row">
+            <!-- Lado izquierdo: Datos y boton de compra -->
+            <div class="col-6 container">
+                <div class="form-group row">
+                    <label for="marca" class="col-sm-3 col-form-label">Marca: </label>
+                    <div class="col-sm-9">
+                      <input type="text" readonly class="form-control-plaintext" id="marca" value={{auto?.marca}}>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="modelo" class="col-sm-3 col-form-label">Modelo: </label>
+                    <div class="col-sm-9">
+                      <input type="text" readonly class="form-control-plaintext" id="modelo" value="{{auto?.modelo! | lowercase | aEspacio: '-'}}">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="anio" class="col-sm-3 col-form-label">Año: </label>
+                    <div class="col-sm-9">
+                      <input type="text" readonly class="form-control-plaintext" id="anio" value={{auto?.anio}}>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="color" class="col-sm-3 col-form-label">Color: </label>
+                    <div class="col-sm-9">
+                      <input type="text" readonly class="form-control-plaintext" id="color" value={{auto?.color}}>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="km" class="col-sm-3 col-form-label">Kilómetros: </label>
+                    <div class="col-sm-9">
+                      <input type="text" readonly class="form-control-plaintext" id="km" value="{{auto?.kilometros | number}}">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="precio" class="col-sm-3 col-form-label">Precio: </label>
+                    <div class="col-sm-9">
+                      <input type="text" readonly class="form-control-plaintext" id="precio" value="{{auto?.precio | currency}}">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="calificacion" class="col-sm-3 col-form-label">Calificación </label>
+                    <div class="col-sm-9">
+                        <estrellas [calificacion]="auto?.calificacion!"></estrellas>
+                    </div>
+                </div>
+                <div class="col-1 container">
+                    <button class='btn btn-outline-primary' style="width:110px" (click)="onBack()">
+                        Comprar
+                    </button>
+                </div>
+            </div>
+            <!-- Lado derecho: Fotos -->
+            <div class="col-6 container">
+                <img [src]="auto?.imagenUrl" 
+                                [style.width.px]="imageWidth" 
+                                [style.margin.px]="imageMargin"/>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <button class='btn btn-outline-secondary' style="width:110px" (click)="onBack()">
+            Regreso
+        </button>
+    </div>
+</div>
